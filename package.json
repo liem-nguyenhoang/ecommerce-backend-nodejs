@@ -7,7 +7,8 @@
     "format:write": "prettier . --write",
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "server:dev": "node --watch server"
   },
   "type": "module",
   "keywords": [],
