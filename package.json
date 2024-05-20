@@ -8,7 +8,7 @@
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepare": "husky",
-    "server:dev": "node --watch server"
+    "server:dev": "node --env-file=.env --watch server"
   },
   "type": "module",
   "keywords": [],
