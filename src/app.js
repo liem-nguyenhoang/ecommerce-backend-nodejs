@@ -4,6 +4,8 @@ import express from 'express'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import compression from 'compression'
+import routers from './routes/index.js'
+import instanceMongodb from './dbs/init.mongodb.js'
 
 const app = express()
 
@@ -11,17 +13,18 @@ const app = express()
 app.use(morgan('combined'))
 app.use(helmet())
 app.use(compression())
+app.use(express.json())
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+)
 
 // init db
-import instanceMongodb from './dbs/init.mongodb.js'
 instanceMongodb
 
 // init routes
-app.get('/', (req, res) => {
-  return res.status(200).json({
-    message: 'Hello World',
-  })
-})
+app.use('/', routers)
 
 // handling errors
 
